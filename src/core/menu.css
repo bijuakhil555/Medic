@@ -1,0 +1,20 @@
+.navbar{
+    background:#0f7dfa !important;
+
+    
+}
+
+.navbar-brand{
+    color: #66a8f3!important
+}
+/* .nav-link{
+    color: white!important
+} */
+.phone,.email{
+    color: #66a8f3;
+}
+
+.carousel slide{
+    position: absolute;
+}
+/* */
