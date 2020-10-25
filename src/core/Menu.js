@@ -26,7 +26,7 @@ const Menu = ({history}) => {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <Link style = {currentTab(history,"/")}  className="nav-link" to="/">Home</Link>
+        <Link style = {currentTab(history,"/")}  className="nav-link" to="/">Dashboard</Link>
       </li>
       <li className="nav-item">
       <Link style = {currentTab(history,"/contact")}  className="nav-link" to="/contact">Link</Link>
@@ -42,7 +42,7 @@ const Menu = ({history}) => {
         <a className="nav-link" href="#"><i class="fas fa-phone-volume phone"></i>+91 8848042631</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#"><i class="fas fa-envelope email"></i> bijuakhil555@gmail.com</a>
+        <a className="nav-link" href="#"><i class="fas fa-envelope email"></i> medic@gmail.com</a>
       </li>
       
       
