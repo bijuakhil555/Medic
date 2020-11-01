@@ -1,9 +1,36 @@
-import React from 'react'
+
 import "./sidebar.css"
+import{Link , withRouter} from "react-router-dom"
+import {getuser} from "../user/helper/userapicalls"
+import React,{ useState,useEffect} from 'react'
 
 export default function Pagecontent() {
+    const [users, setusers] = useState([])
+    const [error, seterror] = useState(false)
+    const loadAllUsers =()=>{
+        getuser().then(data=>{
+            if(error){
+                seterror(data.error)
+            }
+            else{
+                setusers(data)
+            }
+        })
+     
+    }
+
+    useEffect(() => {
+       loadAllUsers()
+    }, [])
+
+  
+  
+
+
     return (
         <div>
+
+                
             <div id="page-content-wrapper">
          
 			
@@ -185,6 +212,144 @@ export default function Pagecontent() {
                                  </div>                               
                              </div>
 </div>
+   
+
+<div class="col-md-6 mt-4">
+                     <div class="card">
+                         <div class="card-body">
+                             {/* <!-- title --> */}
+                             <div class="d-md-flex align-items-center">
+                                 <div>
+                                     <h4 class="card-title">Todays appointment</h4>
+                                     {/* <h5 class="card-subtitle">Overview of Top Selling Items</h5> */}
+                                 </div>
+                                 
+                             </div>
+                             {/* <!-- title --> */}
+                         </div>
+                         <div class="table-responsive">
+                             <table class="table v-middle">
+                                 <thead>
+                                     <tr class="bg-light">
+                                         <th class="border-top-0">Names</th>
+                                         <th class="border-top-0">Time</th>
+                                         
+                                         {/* <th class="border-top-0">Technology</th> */}
+                                         <th class="border-top-0">Ticket No</th>
+                                         {/* <th class="border-top-0">Sales</th> */}
+                                         <th class="border-top-0">Amound</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <tr>
+                                         <td>
+                                             <div class="d-flex align-items-center">
+                                                 <div class="m-r-10"></div>
+                                                 <div class="">
+                                                     <h4 class="m-b-0 font-16">Akshay</h4>
+                                                 </div>
+                                             </div>
+                                         </td>
+                                         <td>4:00 PM</td>
+                                        
+                                         <td>
+                                             <label class="label label-danger">01</label>
+                                         </td>
+                                         <td>Rs 200</td>
+                                         <Link className="btn btn-primary" to="/treatment">Treatment</Link>
+                                          
+                                         
+                                     </tr>
+                                     <tr>
+                                         <td>
+                                             <div class="d-flex align-items-center">
+                                                 <div class="m-r-10"></div>
+                                                 <div class="">
+                                                     <h4 class="m-b-0 font-16">Joel</h4>
+                                                 </div>
+                                             </div>
+                                         </td>
+                                         <td>4:00 PM</td>
+                                        
+                                         <td>
+                                             <label class="label label-danger">02</label>
+                                         </td>
+                                         <td>Rs 200</td>    
+
+                                          <button type="button" class="btn btn-primary">Treatment</button>                                  
+                                     </tr> 
+                                 </tbody>
+                             </table>
+                         </div>
+                     </div>
+                 </div>
+
+
+{/* appointment req */}
+                 <div class="col-md-6 mt-4">
+                     <div class="card">
+                         <div class="card-body">
+                             {/* <!-- title --> */}
+                             <div class="d-md-flex align-items-center">
+                                 <div>
+                                     <h4 class="card-title">Appointment request</h4>
+                                     {/* <h5 class="card-subtitle">Overview of Top Selling Items</h5> */}
+                                 </div>
+                                 
+                             </div>
+                             {/* <!-- title --> */}
+                         </div>
+                         <div class="table-responsive">
+                             <table class="table v-middle">
+                                 <thead>
+                                     <tr class="bg-light">
+                                         <th class="border-top-0">Names</th>
+                                         {/* <th class="border-top-0">Time</th> */}
+                                         
+                                     </tr>
+                                 </thead>
+
+
+                                
+                                        {users.map((user,index)=>{
+                                            console.log(user)
+                                            if(user.i==1){
+                                            return(
+                                            
+                                                <div key={index} >
+                                                      <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="m-r-10"></div>
+                                                                    <div class="">
+                                                                <h4 class="m-b-0 font-16">{user.name}</h4>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                                <td>{user.time}</td>
+                                                            <button type="button" class="btn btn-primary" >Accept</button>   
+                                                            <button type="button" class="ml-2 btn btn-danger">Decline</button>
+                                                            
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </div>
+                                            )}
+                                        })}
+                                
+
+
+
+
+                                 
+                             </table>
+                         </div>
+                     </div>
+                 </div>
+
+
+
                  {/* <!-- column --> */}
                  <div class="col-md-12 mt-4">
                      <div class="card">
